@@ -1,0 +1,3 @@
+# Hello <%= name %>
+
+hello ngconf 👋

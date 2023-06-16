@@ -1,0 +1,7 @@
+{
+  "name": "@ngconf23/workspace-extensions",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "generators": "./generators.json",
+  "executors": "./executors.json"
+}

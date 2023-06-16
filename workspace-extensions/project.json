@@ -1,0 +1,67 @@
+{
+  "name": "workspace-extensions",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "workspace-extensions/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/workspace-extensions",
+        "main": "workspace-extensions/src/index.ts",
+        "tsConfig": "workspace-extensions/tsconfig.lib.json",
+        "assets": [
+          "workspace-extensions/*.md",
+          {
+            "input": "./workspace-extensions/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./workspace-extensions/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./workspace-extensions",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./workspace-extensions",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "workspace-extensions/**/*.ts",
+          "workspace-extensions/package.json",
+          "workspace-extensions/generators.json",
+          "workspace-extensions/executors.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "workspace-extensions/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

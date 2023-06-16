@@ -1,0 +1,36 @@
+{
+  "name": "modules-nglib",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "modules/nglib/src",
+  "prefix": "ngconf23",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "compilemd": {
+      "executor": "@ngconf23/workspace-extensions:compilemd",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}/html"]
+    },
+
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "modules/nglib/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["modules/nglib/**/*.ts", "modules/nglib/**/*.html"]
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "compilemd": {
+      "implementation": "./src/executors/compilemd/executor",
+      "schema": "./src/executors/compilemd/schema.json",
+      "description": "compilemd executor"
+    }
+  }
+}

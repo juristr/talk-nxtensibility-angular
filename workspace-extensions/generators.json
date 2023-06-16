@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "customlib": {
+      "factory": "./src/generators/customlib/generator",
+      "schema": "./src/generators/customlib/schema.json",
+      "description": "customlib generator"
+    }
+  }
+}
